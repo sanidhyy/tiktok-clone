@@ -2,6 +2,22 @@
   "name": "tiktok-clone",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Sanidhya Kr. Verma",
+  "description": "Tiktok Clone using React JS",
+  "keywords": [
+    "reactjs",
+    "react",
+    "tiktok-clone",
+    "tailwind-css",
+    "sanity",
+    "js",
+    "javascript",
+    "typescript",
+    "ts",
+    "html",
+    "css"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
