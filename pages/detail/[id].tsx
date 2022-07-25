@@ -65,8 +65,13 @@ const Detail = ({ postDetails }: IProps) => {
   const addComment = async (e: { preventDefault: any }) => {
     e.preventDefault(); // prevent page reload
 
+    // Check if string is empty or contains whitespaces
+    const isEmptyOrSpaces = (str: string) => {
+      return /^\s*$/.test(str);
+    };
+
     // check user login
-    if (userProfile && comment) {
+    if (userProfile && !isEmptyOrSpaces(comment)) {
       setIsPostingComment(true);
 
       // add comment
