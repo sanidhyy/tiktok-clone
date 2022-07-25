@@ -22,11 +22,16 @@ const Navbar = () => {
 
   const router = useRouter();
 
+  // Check if string is empty or contains whitespaces
+  const isEmptyOrSpaces = (str: string) => {
+    return /^\s*$/.test(str);
+  };
+
   // handle search
   const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    if (searchValue) {
+    if (!isEmptyOrSpaces(searchValue)) {
       router.push(`/search/${searchValue}`);
     }
   };
