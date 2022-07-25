@@ -1,3 +1,4 @@
+// Post Schema
 export default {
   name: "post",
   title: "Post",

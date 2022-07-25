@@ -1,3 +1,4 @@
+// Comment Schema
 export default {
   name: "comment",
   title: "Comment",

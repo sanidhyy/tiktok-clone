@@ -1,3 +1,4 @@
+// PostedBy Schema
 export default {
   name: "postedBy",
   title: "Posted By",

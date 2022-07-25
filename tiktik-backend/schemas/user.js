@@ -1,3 +1,4 @@
+// User Schema
 export default {
   name: "user",
   title: "User",
