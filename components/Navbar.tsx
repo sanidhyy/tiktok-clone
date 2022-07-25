@@ -11,6 +11,7 @@ import useAuthStore from "../store/authStore";
 import { createOrGetUser } from "../utils";
 import Logo from "../utils/tiktik-logo.png";
 
+// Navbar
 const Navbar = () => {
   const {
     userProfile,
@@ -21,6 +22,7 @@ const Navbar = () => {
 
   const router = useRouter();
 
+  // handle search
   const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
@@ -28,10 +30,12 @@ const Navbar = () => {
       router.push(`/search/${searchValue}`);
     }
   };
+
   return (
     <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
       <Link href="/">
         <div className="w-[100px] md:w-[130px]">
+          {/* Brand Logo */}
           <Image
             className="cursor-pointer"
             src={Logo}
@@ -46,6 +50,7 @@ const Navbar = () => {
           onSubmit={handleSearch}
           className="absolute md:static top-10 -left-20 bg-white"
         >
+          {/* Search input */}
           <input
             type="text"
             value={searchValue}
@@ -53,6 +58,7 @@ const Navbar = () => {
             placeholder="Search accounts and videos"
             className="bg-primary p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full md:top-0"
           />
+          {/* Search Btn */}
           <button
             onClick={handleSearch}
             className="absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400"
@@ -63,14 +69,18 @@ const Navbar = () => {
       </div>
 
       <div>
+        {/* check user login */}
         {userProfile ? (
           <div className="flex gap-5 md:gap-10">
+            {/* upload post */}
             <Link href="/upload">
               <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
                 <IoMdAdd className="text-xl" />
                 {` `} <span className="hidden md:block">Upload</span>
               </button>
             </Link>
+
+            {/* User Avatar */}
             {userProfile.image && (
               <Link href="/">
                 <>
@@ -84,6 +94,7 @@ const Navbar = () => {
                 </>
               </Link>
             )}
+            {/* Logout */}
             <button
               type="button"
               className="px-2"
@@ -97,9 +108,10 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
+          // Google Login
           <GoogleLogin
             onSuccess={(response) => createOrGetUser(response, addUser)}
-            onError={() => console.log("Error")}
+            onError={() => console.log("Google Login Error")}
           />
         )}
       </div>
