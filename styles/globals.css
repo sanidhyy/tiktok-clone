@@ -1,7 +1,9 @@
+/* Import Tailwind CSS ulitility functions */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Basic CSS Styles */
 html,
 body {
   padding: 0;

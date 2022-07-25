@@ -1,3 +1,6 @@
+// This File contains pre defined queries for whole app (don't remove anything from here)
+
+// all posts query
 export const allPostsQuery = () => {
   const query = `*[_type == "post"] | order(_createdAt desc){
     _id,
@@ -29,6 +32,7 @@ export const allPostsQuery = () => {
   return query;
 };
 
+// post detail query
 export const postDetailQuery = (postId: string | string[]) => {
   const query = `*[_type == "post" && _id == '${postId}']{
     _id,
@@ -58,6 +62,7 @@ export const postDetailQuery = (postId: string | string[]) => {
   return query;
 };
 
+// search post query
 export const searchPostsQuery = (searchTerm: string | string[]) => {
   const query = `*[_type == "post" && caption match '${searchTerm}*' || topic match '${searchTerm}*'] {
     _id,
@@ -88,18 +93,21 @@ likes,
   return query;
 };
 
+// single user query
 export const singleUserQuery = (userId: string | string[]) => {
   const query = `*[_type == "user" && _id == '${userId}']`;
 
   return query;
 };
 
+// all users query
 export const allUsersQuery = () => {
   const query = `*[_type == "user"]`;
 
   return query;
 };
 
+// user created posts query
 export const userCreatedPostsQuery = (userId: string | string[]) => {
   const query = `*[ _type == 'post' && userId == '${userId}'] | order(_createdAt desc){
     _id,
@@ -132,6 +140,7 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
   return query;
 };
 
+// user liked posts query
 export const userLikedPostsQuery = (userId: string | string[]) => {
   const query = `*[_type == 'post' && '${userId}' in likes[]._ref ] | order(_createdAt desc) {
     _id,
@@ -164,6 +173,7 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
   return query;
 };
 
+// topic posts query
 export const topicPostsQuery = (topic: string | string[]) => {
   const query = `*[_type == "post" && topic match '${topic}*'] {
     _id,
