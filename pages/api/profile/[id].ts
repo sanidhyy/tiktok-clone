@@ -7,6 +7,7 @@ import {
 } from "../../../utils/queries";
 import { client } from "../../../utils/client";
 
+// fetch User Profile data
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

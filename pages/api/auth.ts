@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { client } from "../../utils/client";
 
+// Add new user
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

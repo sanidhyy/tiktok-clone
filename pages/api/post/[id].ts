@@ -4,11 +4,13 @@ import { uuid } from "uuidv4";
 import { client } from "../../../utils/client";
 import { postDetailQuery } from "../../../utils/queries";
 
+// Post
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
+    // fetch a post details
     const { id } = req.query;
     const query = postDetailQuery(id);
 
@@ -16,6 +18,7 @@ export default async function handler(
 
     res.status(200).json(data[0]);
   } else if (req.method === "PUT") {
+    // insert comments
     const { comment, userId } = req.body;
     const { id }: any = req.query;
 

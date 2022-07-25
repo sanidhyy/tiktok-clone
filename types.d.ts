@@ -1,3 +1,5 @@
+// Contains Type interface of different objects for typescript (Don't remove anything here)
+
 export interface Video {
   caption: string;
   video: {
@@ -24,6 +26,7 @@ export interface Video {
     _key: string;
     postedBy: {
       _ref: string;
+      _id: string;
     };
   }[];
   userId: string;
