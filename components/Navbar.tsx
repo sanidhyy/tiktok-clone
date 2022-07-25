@@ -104,7 +104,7 @@ const Navbar = () => {
               }}
               title="Logout"
             >
-              <AiOutlineLogout color="red" fontSize={21} />
+              <AiOutlineLogout color="#f51897" fontSize={21} />
             </button>
           </div>
         ) : (

@@ -27,7 +27,10 @@ const Footer = () => {
       <List items={footerList3} mt />
 
       {/* Copyright Info */}
-      <p className="text-gray-400 text-sm mt-5">2022 TikTik</p>
+      <p className="text-gray-400 text-sm mt-5">
+        {new Date().getFullYear()}{" "}
+        <span className="text-[#f51897]">TikTik</span>
+      </p>
     </div>
   );
 };
