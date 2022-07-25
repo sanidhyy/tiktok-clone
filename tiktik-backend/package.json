@@ -2,10 +2,10 @@
   "name": "tiktik-backend",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for Tiktok clone project",
   "main": "package.json",
-  "author": "Shubham Verma <vermashubham50779@gmail.com>",
-  "license": "UNLICENSED",
+  "author": "Sanidhya Kumar Verma <sanidhya.verma12345@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
