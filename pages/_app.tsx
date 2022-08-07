@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
+import Head from "next/head";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import Navbar from "../components/Navbar";
@@ -22,6 +23,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <GoogleOAuthProvider
       clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN}`}
     >
+      {/* Head */}
+      <Head>
+        <title>TikTik - TikTok Clone</title>
+      </Head>
+
       <div className="xl:w-[1200px] m-auto overflow-hidden h-[100vh]">
         {/* Navbar */}
         <Navbar />
