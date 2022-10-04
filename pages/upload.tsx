@@ -39,6 +39,7 @@ const Upload = () => {
         })
         .then((data) => {
           setVideoAsset(data);
+          setWrongFileType(false);
           setIsLoading(false);
         });
     } else {
