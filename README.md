@@ -1,6 +1,6 @@
 # Tiktik - A Next JS TikTok Clone
 
-![A Next JS TikTok Clone](https://user-images.githubusercontent.com/71302066/181027204-1bce32fa-d116-43f8-a601-3c8d4bc97513.png "A Fitness Exercise App using Next JS")
+![A Next JS TikTok Clone](https://user-images.githubusercontent.com/71302066/181027204-1bce32fa-d116-43f8-a601-3c8d4bc97513.png "A Next JS TikTok Clone")
 
 [![Ask Me Anything!](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/Technical-Shubham-tech "Ask Me Anything!")
 [![GitHub license](https://img.shields.io/github/license/Technical-Shubham-tech/tiktok-clone?)](https://github.com/Technical-Shubham-tech/tiktok-clone/blob/main/LICENSE.md "GitHub license")
