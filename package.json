@@ -29,7 +29,7 @@
     "@sanity/client": "^3.3.0",
     "axios": "^0.28.0",
     "jwt-decode": "^3.1.2",
-    "next": "12.1.6",
+    "next": "14.1.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-google-login": "^5.2.2",
