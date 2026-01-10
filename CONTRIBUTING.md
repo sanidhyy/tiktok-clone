@@ -1,7 +1,7 @@
 ## Contributing
 
-[fork]: https://github.com/Technical-Shubham-tech/tiktok-clone/fork
-[pr]: https://github.com/Technical-Shubham-tech/tiktok-clone/compare
+[fork]: https://github.com/sanidhyy/tiktok-clone/fork
+[pr]: https://github.com/sanidhyy/tiktok-clone/compare
 [style]: https://standardjs.com/
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
