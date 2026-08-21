@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Backend for Tiktok clone project",
   "main": "package.json",
-  "author": "Sanidhya Kumar Verma <sanidhya.verma12345@gmail.com>",
+  "author": "Sanidhya Kumar Verma <sanidhyyy@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "sanity start",
