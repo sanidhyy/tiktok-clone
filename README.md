@@ -59,6 +59,14 @@ _NOTE_: Make sure you don't share these keys publicaly.
 4. Once packages are installed, you can start this app using `npm start` or `yarn start`
 5. Now app is fully configured and you can start using this app :+1:
 
+### :raising_hand: Need Help?
+
+If you run into issues during installation or setup:
+
+- **GitHub Discussions** — [Open a Q&A discussion](https://github.com/sanidhyy/tiktok-clone/discussions/new?category=q-a) for setup and troubleshooting help.
+- **Email** — [sanidhyyy@gmail.com](mailto:sanidhyyy@gmail.com)
+- **Discord** — `sanidhyy`
+
 ## :camera: Screenshots:
 
 ![Post Details](https://user-images.githubusercontent.com/71302066/182081631-e3c86b5f-4ec3-426f-bd32-79069ac375f8.png "Post Details")
