@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { client } from "../../../../utils/client";
-import { postDetailQuery } from "../../../../utils/queries";
+import { client } from "@/utils/client";
+import { postDetailQuery } from "@/utils/queries";
 
 export async function GET(
   _req: NextRequest,

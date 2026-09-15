@@ -9,9 +9,9 @@ import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 
-import useAuthStore from "../store/authStore";
-import { createOrGetUser } from "../utils";
-import Logo from "../utils/tiktik-logo.png";
+import useAuthStore from "@/store/authStore";
+import { createOrGetUser } from "@/utils";
+import Logo from "@/utils/tiktik-logo.png";
 import Avatar from "./Avatar";
 
 // Navbar

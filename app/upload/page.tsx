@@ -6,10 +6,10 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import axios from "axios";
 
-import useAuthStore from "../../store/authStore";
-import { topics } from "../../utils/constants";
-import { BASE_URL } from "../../utils";
-import Spinner from "../../components/Spinner";
+import useAuthStore from "@/store/authStore";
+import { topics } from "@/utils/constants";
+import { BASE_URL } from "@/utils";
+import Spinner from "@/components/Spinner";
 
 type UploadedAsset = { _id: string; url?: string };
 

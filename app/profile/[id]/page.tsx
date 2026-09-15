@@ -1,11 +1,11 @@
 import ProfileClient from "./profile-client";
-import { IUser, Video } from "../../../types";
-import { client } from "../../../utils/client";
+import { IUser, Video } from "@/types";
+import { client } from "@/utils/client";
 import {
   singleUserQuery,
   userCreatedPostsQuery,
   userLikedPostsQuery,
-} from "../../../utils/queries";
+} from "@/utils/queries";
 
 export const dynamic = "force-dynamic";
 

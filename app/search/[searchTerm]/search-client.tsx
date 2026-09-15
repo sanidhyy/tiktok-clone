@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 
-import Avatar from "../../../components/Avatar";
-import VideoCard from "../../../components/VideoCard";
-import NoResults from "../../../components/NoResults";
-import { IUser, Video } from "../../../types";
-import useAuthStore from "../../../store/authStore";
+import Avatar from "@/components/Avatar";
+import VideoCard from "@/components/VideoCard";
+import NoResults from "@/components/NoResults";
+import { IUser, Video } from "@/types";
+import useAuthStore from "@/store/authStore";
 
 const SearchClient = ({
   videos,

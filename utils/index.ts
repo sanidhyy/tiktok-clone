@@ -2,7 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import type { CredentialResponse } from "@react-oauth/google";
 
-import { IUser } from "../types";
+import { IUser } from "@/types";
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 

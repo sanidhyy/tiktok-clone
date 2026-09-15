@@ -9,12 +9,12 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
 
-import { BASE_URL } from "../../../utils";
-import { Video } from "../../../types";
-import useAuthStore from "../../../store/authStore";
-import LikeButton from "../../../components/LikeButton";
-import Comments from "../../../components/Comments";
-import Avatar from "../../../components/Avatar";
+import { BASE_URL } from "@/utils";
+import { Video } from "@/types";
+import useAuthStore from "@/store/authStore";
+import LikeButton from "@/components/LikeButton";
+import Comments from "@/components/Comments";
+import Avatar from "@/components/Avatar";
 
 const DetailClient = ({ postDetails }: { postDetails: Video }) => {
   const [post, setPost] = useState(postDetails);

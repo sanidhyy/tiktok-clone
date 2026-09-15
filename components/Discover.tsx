@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-import { topics } from "../utils/constants";
+import { topics } from "@/utils/constants";
 
 // Discover
 const Discover = () => {

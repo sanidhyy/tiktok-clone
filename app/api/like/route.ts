@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { client } from "../../../utils/client";
+import { client } from "@/utils/client";
 
 export async function PUT(req: NextRequest) {
   const { userId, postId, like } = await req.json();

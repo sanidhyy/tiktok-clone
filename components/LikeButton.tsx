@@ -3,7 +3,7 @@
 import React from "react";
 import { MdFavorite } from "react-icons/md";
 
-import useAuthStore from "../store/authStore";
+import useAuthStore from "@/store/authStore";
 import Spinner from "./Spinner";
 
 interface IProps {

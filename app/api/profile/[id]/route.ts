@@ -4,8 +4,8 @@ import {
   singleUserQuery,
   userCreatedPostsQuery,
   userLikedPostsQuery,
-} from "../../../../utils/queries";
-import { client } from "../../../../utils/client";
+} from "@/utils/queries";
+import { client } from "@/utils/client";
 
 export async function GET(
   _req: NextRequest,

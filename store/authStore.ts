@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
 
-import { BASE_URL } from "../utils";
-import { IUser } from "../types";
+import { BASE_URL } from "@/utils";
+import { IUser } from "@/types";
 
 interface AuthState {
   userProfile: IUser | null;

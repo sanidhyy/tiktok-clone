@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { GoVerified } from "react-icons/go";
 
-import Avatar from "../../../components/Avatar";
-import VideoCard from "../../../components/VideoCard";
-import NoResults from "../../../components/NoResults";
-import { IUser, Video } from "../../../types";
+import Avatar from "@/components/Avatar";
+import VideoCard from "@/components/VideoCard";
+import NoResults from "@/components/NoResults";
+import { IUser, Video } from "@/types";
 
 const ProfileClient = ({
   data,

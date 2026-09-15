@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { client } from "../../../utils/client";
+import { client } from "@/utils/client";
 
 const FILE_TYPES = ["video/mp4", "video/webm", "video/ogg"];
 

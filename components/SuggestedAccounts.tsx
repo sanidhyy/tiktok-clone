@@ -4,8 +4,8 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 
-import useAuthStore from "../store/authStore";
-import { IUser } from "../types";
+import useAuthStore from "@/store/authStore";
+import { IUser } from "@/types";
 import Avatar from "./Avatar";
 
 // Suggested Accounts

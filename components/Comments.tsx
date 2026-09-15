@@ -5,9 +5,9 @@ import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 import { IoSend } from "react-icons/io5";
 
-import useAuthStore from "../store/authStore";
+import useAuthStore from "@/store/authStore";
 import NoResults from "./NoResults";
-import { IUser } from "../types";
+import { IUser } from "@/types";
 import Avatar from "./Avatar";
 import Spinner from "./Spinner";
 

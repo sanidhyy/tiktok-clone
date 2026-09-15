@@ -1,7 +1,7 @@
 import SearchClient from "./search-client";
-import { Video } from "../../../types";
-import { client } from "../../../utils/client";
-import { searchPostsQuery } from "../../../utils/queries";
+import { Video } from "@/types";
+import { client } from "@/utils/client";
+import { searchPostsQuery } from "@/utils/queries";
 
 export const dynamic = "force-dynamic";
 

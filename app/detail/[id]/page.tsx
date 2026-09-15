@@ -1,6 +1,6 @@
 import DetailClient from "./detail-client";
-import { client } from "../../../utils/client";
-import { postDetailQuery } from "../../../utils/queries";
+import { client } from "@/utils/client";
+import { postDetailQuery } from "@/utils/queries";
 
 export const dynamic = "force-dynamic";
 

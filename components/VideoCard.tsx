@@ -6,7 +6,7 @@ import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 
-import { Video } from "../types";
+import { Video } from "@/types";
 import Avatar from "./Avatar";
 
 // Props interface

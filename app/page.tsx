@@ -1,8 +1,8 @@
-import NoResults from "../components/NoResults";
-import VideoCard from "../components/VideoCard";
-import { Video } from "../types";
-import { client } from "../utils/client";
-import { allPostsQuery, topicPostsQuery } from "../utils/queries";
+import NoResults from "@/components/NoResults";
+import VideoCard from "@/components/VideoCard";
+import { Video } from "@/types";
+import { client } from "@/utils/client";
+import { allPostsQuery, topicPostsQuery } from "@/utils/queries";
 
 export const dynamic = "force-dynamic";
 
