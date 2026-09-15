@@ -1,7 +1,26 @@
-/* Import Tailwind CSS ulitility functions */
 @import 'tailwindcss';
 
-@config '../tailwind.config.js';
+@theme {
+  --width-1600: 1600px;
+  --width-400: 400px;
+  --width-450: 450px;
+  --width-210: 210px;
+  --width-550: 550px;
+  --width-260: 260px;
+  --width-650: 650px;
+
+  --height-600: 600px;
+  --height-280: 280px;
+  --height-900: 900px;
+  --height-458: 458px;
+  --height-88vh: 88vh;
+
+  --color-primary: rgb(22, 24, 35);
+  --background-color-primary: #f1f1f2;
+  --background-color-blur: #030303;
+
+  --background-image-blurred-img: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsaaJ7s4lqcBF4IDROVPzrlL5fexcwRmDlnuEYQenWTt1DejFY5kmYDref2a0Hp2eE4aw&usqp=CAU');
+}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
