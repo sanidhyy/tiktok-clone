@@ -13,7 +13,7 @@ interface IProps {
 // Like Button
 const LikeButton = ({ handleLike, handleDislike, likes }: IProps) => {
   const [alreadyLiked, setAlreadyLiked] = useState(false);
-  const { userProfile }: any = useAuthStore();
+  const { userProfile } = useAuthStore();
   const filterLikes = likes?.filter((item) => item._ref === userProfile?._id);
 
   // check if video is already liked

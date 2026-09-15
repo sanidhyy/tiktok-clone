@@ -28,7 +28,7 @@ const Detail = ({ postDetails }: IProps) => {
   const [isPostingComment, setIsPostingComment] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
-  const { userProfile }: any = useAuthStore();
+  const { userProfile } = useAuthStore();
 
   // video pause/play
   const onVideoClick = () => {

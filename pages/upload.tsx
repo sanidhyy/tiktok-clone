@@ -17,7 +17,7 @@ const Upload = () => {
   const [wrongFileType, setWrongFileType] = useState(false);
   const [caption, setCaption] = useState("");
   const [category, setCategory] = useState(topics[0].name);
-  const { userProfile }: { userProfile: any } = useAuthStore();
+  const { userProfile } = useAuthStore();
 
   // router
   const router = useRouter();

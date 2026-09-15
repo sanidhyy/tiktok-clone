@@ -1,28 +1,32 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import type { CredentialResponse } from "@react-oauth/google";
 
-// base url
+import { IUser } from "../types";
+
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-// create or get user
-export const createOrGetUser = async (response: any, addUser: any) => {
+export const createOrGetUser = async (
+  response: CredentialResponse,
+  addUser: (user: IUser) => void,
+) => {
+  if (!response.credential) return;
+
   const decoded: { name: string; picture: string; sub: string } = jwtDecode(
-    response.credential
+    response.credential,
   );
 
   const { name, picture, sub } = decoded;
 
-  // user
-  const user = {
+  const user: IUser = {
     _id: sub,
     _type: "user",
     userName: name,
     image: picture,
   };
 
-  // add user
   addUser(user);
 
-  // insert user
   await axios.post(`${BASE_URL}/api/auth`, user);
 };
+
