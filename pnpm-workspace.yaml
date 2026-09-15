@@ -1,0 +1,8 @@
+packages:
+  - "tiktik-backend"
+
+allowBuilds:
+  core-js: false
+  es5-ext: false
+  sharp: false
+  uglifyjs-webpack-plugin: false

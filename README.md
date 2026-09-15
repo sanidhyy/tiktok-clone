@@ -14,9 +14,8 @@
 ## :warning: Before you start
 
 1. Make sure [Git](https://git-scm.com "Git") and [NodeJS](https://nodejs.org "NodeJS") are installed
-2. **Yarn** is faster than Npm. So use [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/ "Yarn").
-3. Create `.env.development` file in root folder.
-4. Contents of `.env.development`
+2. Create `.env.local` file in root folder.
+3. Contents of `.env.local`
 
 ```
 NEXT_PUBLIC_SANITY_PROJECT_ID=XXXXXXXXXX
@@ -26,8 +25,8 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
 5. Clone this repository to your local computer.
-6. Open terminal in root directory. Run `npm install` or `yarn install`.
-7. Now, cd `tiktik-backend`. Run `npm install` or `yarn install` again.
+6. Open terminal in root directory. Run `npm install` or `pnpm install`.
+7. Now, cd `tiktik-backend`. Run `npm install` or `pnpm install` again.
 8. Now all required packages are installed, let's setup sanity.
 9. Create an account in [Sanity](https://www.sanity.io/ "Sanity").
 10. In terminal, type `sanity init` to initialize our sanity project.
@@ -55,8 +54,8 @@ _NOTE_: Make sure you don't share these keys publicaly.
 
 1. Clone this **repository** to your local computer.
 2. Open **terminal** in root directory.
-3. Type and Run `npm install` or `yarn install`.
-4. Once packages are installed, you can start this app using `npm start` or `yarn start`
+3. Type and Run `npm install` or `pnpm install`.
+4. Once packages are installed, you can start this app using `npm start` or `pnpm start`
 5. Now app is fully configured and you can start using this app :+1:
 
 ### :raising_hand: Need Help?
@@ -117,7 +116,7 @@ First, run the development server:
 ```bash
 npm run dev
 # or
-yarn dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

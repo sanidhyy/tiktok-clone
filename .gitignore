@@ -3,6 +3,7 @@
 # dependencies
 node_modules
 /.pnp
+.pnpm-store
 .pnp.js
 
 # testing
@@ -26,10 +27,8 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
-
-# dev env files
-.env.development
+.env*
+!.env.example
 
 # vercel
 .vercel
