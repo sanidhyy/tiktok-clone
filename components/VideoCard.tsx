@@ -42,7 +42,7 @@ const VideoCard = ({ post }: IProps) => {
   return (
     <div className="flex flex-col border-p-2 border-gray-200 pb-6">
       <div>
-        <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
+        <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded-sm">
           <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href={`/profile/${post.postedBy._id}`}>
               <>

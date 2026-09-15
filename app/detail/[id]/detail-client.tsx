@@ -86,7 +86,7 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
           </p>
         </div>
         <div className="relative">
-          <div className="lg:h-[100vh] h-[60vh]">
+          <div className="lg:h-screen h-[60vh]">
             <video
               src={post.video.asset.url}
               className="h-full cursor-pointer"
@@ -123,7 +123,7 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
 
       <div className="relative w-[1000px] md:w-[900px] lg:w-[700px]">
         <div className="lg:mt-20 mt-10">
-          <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
+          <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded-sm">
             <div className="ml-4 md:w-16 md:h-16 w-16 h-16">
               <Link href="/">
                 <Image

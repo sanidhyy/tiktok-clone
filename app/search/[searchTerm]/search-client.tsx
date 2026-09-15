@@ -49,7 +49,7 @@ const SearchClient = ({
           {searchedAccounts.length ? (
             searchedAccounts.map((user: IUser) => (
               <Link href={`/profile/${user._id}`} key={user._id}>
-                <div className="flex p-2 font-semibold rounded border-b-2 border-gray-4000 gap-3 cursor-pointer">
+                <div className="flex p-2 font-semibold rounded-sm border-b-2 border-gray-4000 gap-3 cursor-pointer">
                   <div>
                     <Image
                       src={user.image}

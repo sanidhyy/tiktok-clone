@@ -88,7 +88,7 @@ const Upload = () => {
               Post a video to your account
             </p>
           </div>
-          <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none mt-10 w-[260px] h-[460px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100">
+          <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-hidden mt-10 w-[260px] h-[460px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100">
             {isLoading ? (
               <p>Uploading...</p>
             ) : (
@@ -118,7 +118,7 @@ const Upload = () => {
                         Up to 10 minutes <br />
                         Less than 2GB
                       </p>
-                      <p className="bg-[#F51997] text-center mt-10 rounded text-white text-md font-medium p-2 w-52 outline-none">
+                      <p className="bg-[#F51997] text-center mt-10 rounded-sm text-white text-md font-medium p-2 w-52 outline-hidden">
                         Select File
                       </p>
                     </div>
@@ -146,17 +146,17 @@ const Upload = () => {
             type="text"
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
-            className="rounded outline-none text-md border-2 border-gray-200 p-2"
+            className="rounded-sm outline-hidden text-md border-2 border-gray-200 p-2"
           />
           <label className="text-md font-medium">Choose a Category</label>
           <select
             onChange={(e) => setCategory(e.target.value)}
-            className="outline-none border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer"
+            className="outline-hidden border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded-sm cursor-pointer"
           >
             {topics.map((topic) => (
               <option
                 key={topic.name}
-                className="outline-none capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
+                className="outline-hidden capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
                 value={topic.name}
               >
                 {topic.name}
@@ -167,14 +167,14 @@ const Upload = () => {
             <button
               onClick={() => {}}
               type="button"
-              className="border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
+              className="border-gray-300 border-2 text-md font-medium p-2 rounded-sm w-28 lg:w-44 outline-hidden"
             >
               Discard
             </button>
             <button
               onClick={handlePost}
               type="button"
-              className="bg-[#F51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
+              className="bg-[#F51997] text-white text-md font-medium p-2 rounded-sm w-28 lg:w-44 outline-hidden"
             >
               Post
             </button>
