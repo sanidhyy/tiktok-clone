@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 
 import { Video } from "../types";
+import Avatar from "./Avatar";
 
 // Props interface
 interface IProps {
@@ -45,16 +45,11 @@ const VideoCard = ({ post }: IProps) => {
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded-sm">
           <div className="md:w-16 md:h-16 w-10 h-10">
             <Link href={`/profile/${post.postedBy._id}`}>
-              <>
-                {/* Post User Avatar */}
-                <Image
-                  width={62}
-                  height={62}
-                  className="rounded-full"
-                  src={post.postedBy.image}
-                  alt="profile photo"
-                />
-              </>
+              <Avatar
+                src={post.postedBy.image}
+                alt={post.postedBy.userName}
+                size={62}
+              />
             </Link>
           </div>
           <div>
@@ -88,12 +83,12 @@ const VideoCard = ({ post }: IProps) => {
               ref={videoRef}
               src={post.video.asset.url}
               loop
-              className="lg:w-[600px] h-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100"
+              className="lg:w-150 h-75 md:h-100 lg:h-132.5 w-50 rounded-2xl cursor-pointer bg-gray-100"
             ></video>
           </Link>
 
           {isHover && (
-            <div className="absolute bottom-6 cursor-pointer left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] p-3">
+            <div className="absolute bottom-6 cursor-pointer left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-25 md:w-12.5 p-3">
               {playing ? (
                 // pause button
                 <button onClick={onVideoPress}>

@@ -12,14 +12,11 @@ import { IoMdAdd } from "react-icons/io";
 import useAuthStore from "../store/authStore";
 import { createOrGetUser } from "../utils";
 import Logo from "../utils/tiktik-logo.png";
+import Avatar from "./Avatar";
 
 // Navbar
 const Navbar = () => {
-  const {
-    userProfile,
-    addUser,
-    removeUser,
-  } = useAuthStore();
+  const { userProfile, addUser, removeUser } = useAuthStore();
   const [searchValue, setSearchValue] = useState("");
 
   const router = useRouter();
@@ -41,7 +38,7 @@ const Navbar = () => {
   return (
     <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
       <Link href="/">
-        <div className="w-[100px] md:w-[130px]">
+        <div className="w-25 md:w-32.5">
           {/* Brand Logo */}
           <Image
             className="cursor-pointer w-full h-auto"
@@ -62,7 +59,7 @@ const Navbar = () => {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Search accounts and videos"
-            className="bg-primary p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-hidden focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full md:top-0"
+            className="bg-primary p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-hidden focus:border-2 focus:border-gray-300 w-75 md:w-87.5 rounded-full md:top-0"
           />
           {/* Search Btn */}
           <button
@@ -89,12 +86,10 @@ const Navbar = () => {
             {/* User Avatar */}
             {userProfile.image && (
               <Link href={`/profile/${userProfile._id}`}>
-                <Image
-                  width={40}
-                  height={40}
-                  className="rounded-full cursor-pointer"
+                <Avatar
                   src={userProfile.image}
-                  alt="profile photo"
+                  alt={userProfile.userName}
+                  className="cursor-pointer"
                 />
               </Link>
             )}

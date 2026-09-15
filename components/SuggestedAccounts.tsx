@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 
 import useAuthStore from "../store/authStore";
 import { IUser } from "../types";
+import Avatar from "./Avatar";
 
 // Suggested Accounts
 const SuggestedAccounts = () => {
@@ -31,13 +31,7 @@ const SuggestedAccounts = () => {
             <div className="flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded-sm">
               <div className="w-8 h-8">
                 {/* User Avatar */}
-                <Image
-                  src={user.image}
-                  width={34}
-                  height={34}
-                  className="rounded-full"
-                  alt={user.userName}
-                />
+                <Avatar src={user.image} alt={user.userName} size={34} />
               </div>
 
               <div className="hidden xl:block">

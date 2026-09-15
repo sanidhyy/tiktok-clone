@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { GoVerified } from "react-icons/go";
 
+import Avatar from "../../../components/Avatar";
 import VideoCard from "../../../components/VideoCard";
 import NoResults from "../../../components/NoResults";
 import { IUser, Video } from "../../../types";
@@ -28,13 +28,7 @@ const ProfileClient = ({
     <div className="w-full">
       <div className="flex gap-6 md:gap-10 mb-4 bg-white w-full">
         <div className="w-16 h-16 md:w-32 md:h-32">
-          <Image
-            src={user.image}
-            width={120}
-            height={120}
-            className="rounded-full"
-            alt={user.userName}
-          />
+          <Avatar src={user.image} alt={user.userName} size={120} />
         </div>
 
         <div className="flex flex-col justify-center">

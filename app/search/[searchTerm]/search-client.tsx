@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
 
+import Avatar from "../../../components/Avatar";
 import VideoCard from "../../../components/VideoCard";
 import NoResults from "../../../components/NoResults";
 import { IUser, Video } from "../../../types";
@@ -51,13 +51,7 @@ const SearchClient = ({
               <Link href={`/profile/${user._id}`} key={user._id}>
                 <div className="flex p-2 font-semibold rounded-sm border-b-2 border-gray-4000 gap-3 cursor-pointer">
                   <div>
-                    <Image
-                      src={user.image}
-                      width={50}
-                      height={50}
-                      className="rounded-full"
-                      alt={user.userName}
-                    />
+                    <Avatar src={user.image} alt={user.userName} size={50} />
                   </div>
 
                   <div className="hidden xl:block">
