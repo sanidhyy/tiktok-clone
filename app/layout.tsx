@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Providers from "./providers";
-import "../styles/globals.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "TikTik - TikTok Clone",
