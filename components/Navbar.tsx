@@ -64,7 +64,7 @@ const Navbar = () => {
           {/* Search Btn */}
           <button
             onClick={handleSearch}
-            className="absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400"
+            className="absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400 hover:opacity-75"
           >
             <BiSearch />
           </button>
@@ -77,7 +77,7 @@ const Navbar = () => {
           <div className="flex items-center gap-5 md:gap-10">
             <Link
               href="/upload"
-              className="inline-flex h-10 items-center justify-center gap-1.5 border-2 border-gray-200 px-2 md:px-4 text-sm font-semibold rounded-sm hover:bg-gray-100"
+              className="inline-flex h-10 items-center justify-center gap-1.5 border-2 border-gray-200 px-2 md:px-4 text-sm font-semibold rounded-sm hover:opacity-75"
             >
               <IoMdAdd className="text-xl" />
               <span className="hidden md:inline">Upload</span>
@@ -96,7 +96,7 @@ const Navbar = () => {
             {/* Logout */}
             <button
               type="button"
-              className="px-2"
+              className="px-2 hover:opacity-75"
               onClick={() => {
                 googleLogout();
                 removeUser();

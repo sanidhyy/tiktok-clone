@@ -3,11 +3,13 @@
 import React, { Dispatch, SetStateAction, FormEvent } from "react";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
+import { IoSend } from "react-icons/io5";
 
 import useAuthStore from "../store/authStore";
 import NoResults from "./NoResults";
 import { IUser } from "../types";
 import Avatar from "./Avatar";
+import Spinner from "./Spinner";
 
 // Props interface
 interface IProps {
@@ -90,19 +92,23 @@ const Comments = ({
 
       {/* check user login */}
       {userProfile && (
-        <div className="absolute bottom-0 left-0 pb-6 px-2 md:px-10">
-          {/* add comment */}
-          <form onSubmit={addComment} className="flex gap-4">
+        <div className="absolute bottom-0 left-0 right-0 pb-6 px-2 md:px-10">
+          <form onSubmit={addComment} className="relative w-full">
             <input
               type="text"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Add comment..."
-              className="bg-primary px-6 py-4 text-md font-medium border-2 w-62.5 md:w-175 lg:w-87.5 border-gray-100 focus:outline-hidden focus:border-2 focus:border-gray-300 flex-1 rounded-lg"
+              disabled={isPostingComment}
+              className="bg-primary w-full px-6 py-4 pr-14 text-md font-medium border-2 border-gray-100 focus:outline-hidden focus:border-2 focus:border-gray-300 rounded-lg disabled:cursor-not-allowed disabled:opacity-50"
             />
-            {/* comment btn */}
-            <button className="text-md text-gray-400" onClick={addComment}>
-              {isPostingComment ? "Commenting..." : "Comment"}
+            <button
+              type="submit"
+              disabled={isPostingComment}
+              title="Comment"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50"
+            >
+              {isPostingComment ? <Spinner /> : <IoSend className="text-2xl" />}
             </button>
           </form>
         </div>

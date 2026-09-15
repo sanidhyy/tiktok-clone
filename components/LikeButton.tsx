@@ -4,14 +4,21 @@ import React from "react";
 import { MdFavorite } from "react-icons/md";
 
 import useAuthStore from "../store/authStore";
+import Spinner from "./Spinner";
 
 interface IProps {
   handleLike: () => void;
   handleDislike: () => void;
   likes: { _ref?: string }[];
+  disabled?: boolean;
 }
 
-const LikeButton = ({ handleLike, handleDislike, likes }: IProps) => {
+const LikeButton = ({
+  handleLike,
+  handleDislike,
+  likes,
+  disabled = false,
+}: IProps) => {
   const { userProfile } = useAuthStore();
   const alreadyLiked = Boolean(
     likes?.some((item) => item._ref === userProfile?._id),
@@ -21,19 +28,31 @@ const LikeButton = ({ handleLike, handleDislike, likes }: IProps) => {
     <div className="flex gap-6">
       <div className="mt-4 flex flex-col justify-center items-center cursor-pointer">
         {alreadyLiked ? (
-          <div
+          <button
+            type="button"
             onClick={handleDislike}
-            className="bg-primary rounded-full p-2 md:p-4 text-[#F51997]"
+            disabled={disabled}
+            className="relative bg-primary rounded-full p-2 md:p-4 text-[#F51997] hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50"
           >
-            <MdFavorite className="text-lg md:text-2xl" />
-          </div>
+            {disabled ? (
+              <Spinner className="size-4 md:size-6" />
+            ) : (
+              <MdFavorite className="text-lg md:text-2xl" />
+            )}
+          </button>
         ) : (
-          <div
+          <button
+            type="button"
             onClick={handleLike}
-            className="bg-primary rounded-full p-2 md:p-4"
+            disabled={disabled}
+            className="relative bg-primary rounded-full p-2 md:p-4 hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50"
           >
-            <MdFavorite className="text-lg md:text-2xl" />
-          </div>
+            {disabled ? (
+              <Spinner className="size-4 md:size-6" />
+            ) : (
+              <MdFavorite className="text-lg md:text-2xl" />
+            )}
+          </button>
         )}
         <p className="text-md font-semibold">{likes?.length | 0}</p>
       </div>

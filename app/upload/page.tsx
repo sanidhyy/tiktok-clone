@@ -3,17 +3,20 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { IoMdArrowDropdown } from "react-icons/io";
 import axios from "axios";
 
 import useAuthStore from "../../store/authStore";
 import { client } from "../../utils/client";
 import { topics } from "../../utils/constants";
 import { BASE_URL } from "../../utils";
+import Spinner from "../../components/Spinner";
 
 type UploadedAsset = { _id: string; url?: string };
 
 const Upload = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isPosting, setIsPosting] = useState(false);
   const [videoAsset, setVideoAsset] = useState<UploadedAsset | undefined>();
   const [wrongFileType, setWrongFileType] = useState(false);
   const [caption, setCaption] = useState("");
@@ -39,6 +42,11 @@ const Upload = () => {
         .then((data) => {
           setVideoAsset(data);
           setWrongFileType(false);
+        })
+        .catch(() => {
+          setWrongFileType(true);
+        })
+        .finally(() => {
           setIsLoading(false);
         });
     } else {
@@ -48,7 +56,10 @@ const Upload = () => {
   };
 
   const handlePost = async () => {
-    if (caption && videoAsset?._id && category) {
+    if (!caption || !videoAsset?._id || !category || isPosting) return;
+
+    setIsPosting(true);
+    try {
       const document = {
         _type: "post",
         caption,
@@ -56,7 +67,7 @@ const Upload = () => {
           _type: "file",
           asset: {
             _type: "reference",
-            _ref: videoAsset?._id,
+            _ref: videoAsset._id,
           },
         },
         userId: userProfile?._id,
@@ -69,8 +80,12 @@ const Upload = () => {
 
       await axios.post(`${BASE_URL}/api/post`, document);
       router.push("/");
+    } finally {
+      setIsPosting(false);
     }
   };
+
+  const isBusy = isLoading || isPosting;
 
   useEffect(() => {
     if (!userProfile) router.push("/");
@@ -79,7 +94,7 @@ const Upload = () => {
   if (!userProfile) return null;
 
   return (
-    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center">
+    <div className="flex w-full h-full absolute left-0 top-15 mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center">
       <div className="bg-white rounded-lg xl:h-[80vh] w-[60%] flex gap-6 flex-wrap justify-between items-center p-14 pt-6">
         <div>
           <div>
@@ -88,9 +103,12 @@ const Upload = () => {
               Post a video to your account
             </p>
           </div>
-          <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-hidden mt-10 w-[260px] h-[460px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100">
+          <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-hidden mt-10 w-260 h-115 p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100">
             {isLoading ? (
-              <p>Uploading...</p>
+              <p className="flex items-center gap-2 text-gray-500">
+                <Spinner />
+                Uploading...
+              </p>
             ) : (
               <div>
                 {videoAsset ? (
@@ -99,7 +117,7 @@ const Upload = () => {
                       src={videoAsset.url}
                       loop
                       controls
-                      className="rounded-xl h-[450px] mt-16 bg-black"
+                      className="rounded-xl h-112.5 mt-16 bg-black"
                     ></video>
                   </div>
                 ) : (
@@ -118,7 +136,7 @@ const Upload = () => {
                         Up to 10 minutes <br />
                         Less than 2GB
                       </p>
-                      <p className="bg-[#F51997] text-center mt-10 rounded-sm text-white text-md font-medium p-2 w-52 outline-hidden">
+                      <p className="bg-[#F51997] text-center mt-10 rounded-sm text-white text-md font-medium p-2 w-52 outline-hidden hover:opacity-75">
                         Select File
                       </p>
                     </div>
@@ -127,13 +145,14 @@ const Upload = () => {
                       name="upload-video"
                       className="w-0 h-0"
                       onChange={uploadVideo}
+                      disabled={isBusy}
                     />
                   </label>
                 )}
               </div>
             )}
             {wrongFileType && (
-              <p className="text-center text-xl text-red-400 font-semibold mt-4 w-[250px]">
+              <p className="text-center text-xl text-red-400 font-semibold mt-4 w-62.5">
                 Please select a video file.
               </p>
             )}
@@ -146,36 +165,44 @@ const Upload = () => {
             type="text"
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
-            className="rounded-sm outline-hidden text-md border-2 border-gray-200 p-2"
+            disabled={isBusy}
+            className="rounded-sm outline-hidden text-md border-2 border-gray-200 p-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
           <label className="text-md font-medium">Choose a Category</label>
-          <select
-            onChange={(e) => setCategory(e.target.value)}
-            className="outline-hidden border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded-sm cursor-pointer"
-          >
-            {topics.map((topic) => (
-              <option
-                key={topic.name}
-                className="outline-hidden capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
-                value={topic.name}
-              >
-                {topic.name}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              onChange={(e) => setCategory(e.target.value)}
+              disabled={isBusy}
+              className="w-full appearance-none bg-transparent outline-hidden border-2 border-gray-200 text-md capitalize rounded-sm cursor-pointer py-2 pl-2 pr-10 lg:py-4 lg:pl-4 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {topics.map((topic) => (
+                <option
+                  key={topic.name}
+                  className="outline-hidden capitalize bg-white text-gray-700 text-md p-2 hover:bg-slate-300"
+                  value={topic.name}
+                >
+                  {topic.name}
+                </option>
+              ))}
+            </select>
+            <IoMdArrowDropdown className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-xl text-gray-500" />
+          </div>
           <div className="flex gap-6 mt-10">
             <button
-              onClick={() => {}}
+              onClick={() => router.push("/")}
               type="button"
-              className="border-gray-300 border-2 text-md font-medium p-2 rounded-sm w-28 lg:w-44 outline-hidden"
+              disabled={isBusy}
+              className="border-gray-300 border-2 text-md font-medium p-2 rounded-sm w-28 lg:w-44 outline-hidden hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50"
             >
               Discard
             </button>
             <button
               onClick={handlePost}
               type="button"
-              className="bg-[#F51997] text-white text-md font-medium p-2 rounded-sm w-28 lg:w-44 outline-hidden"
+              disabled={isBusy}
+              className="bg-[#F51997] text-white text-md font-medium p-2 rounded-sm w-28 lg:w-44 outline-hidden hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50 inline-flex items-center justify-center gap-2"
             >
+              {isPosting && <Spinner />}
               Post
             </button>
           </div>

@@ -22,6 +22,7 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const [comment, setComment] = useState("");
   const [isPostingComment, setIsPostingComment] = useState(false);
+  const [isLiking, setIsLiking] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
   const { userProfile } = useAuthStore();
@@ -43,7 +44,10 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
   }, [post, isVideoMuted]);
 
   const handleLike = async (like: boolean) => {
-    if (userProfile) {
+    if (!userProfile || isLiking) return;
+
+    setIsLiking(true);
+    try {
       const { data } = await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
@@ -51,6 +55,8 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
       });
 
       setPost({ ...post, likes: data.likes });
+    } finally {
+      setIsLiking(false);
     }
   };
 
@@ -61,9 +67,10 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
       return /^\s*$/.test(str);
     };
 
-    if (userProfile && !isEmptyOrSpaces(comment)) {
-      setIsPostingComment(true);
+    if (!userProfile || isEmptyOrSpaces(comment) || isPostingComment) return;
 
+    setIsPostingComment(true);
+    try {
       const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
         userId: userProfile._id,
         comment,
@@ -71,6 +78,7 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
 
       setPost({ ...post, comments: data.comments });
       setComment("");
+    } finally {
       setIsPostingComment(false);
     }
   };
@@ -157,6 +165,7 @@ const DetailClient = ({ postDetails }: { postDetails: Video }) => {
                 likes={post.likes}
                 handleLike={() => handleLike(true)}
                 handleDislike={() => handleLike(false)}
+                disabled={isLiking}
               />
             )}
           </div>

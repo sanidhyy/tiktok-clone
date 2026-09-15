@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   --width-1600: 1600px;
   --width-400: 400px;
   --width-450: 450px;
@@ -33,9 +36,25 @@
 }
 
 @layer base {
-  button:not([disabled]),
-  [role="button"]:not([disabled]) {
+  button:not(:disabled),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  button:not(:disabled):hover,
+  [type="button"]:not(:disabled):hover,
+  [type="submit"]:not(:disabled):hover {
+    opacity: 0.75;
+  }
+
+  button:disabled,
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
