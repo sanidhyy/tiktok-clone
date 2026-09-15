@@ -3,6 +3,7 @@ packages:
 allowBuilds:
   core-js: false
   es5-ext: false
+  esbuild: true
   sharp: false
   uglifyjs-webpack-plugin: false
   unrs-resolver: true

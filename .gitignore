@@ -15,6 +15,7 @@ node_modules
 
 # production
 /build
+tiktik-backend/dist
 
 # misc
 .DS_Store
@@ -35,3 +36,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+tiktik-backend/.sanity/
