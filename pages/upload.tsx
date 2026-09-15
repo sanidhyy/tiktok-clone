@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import axios from "axios";
@@ -23,9 +23,13 @@ const Upload = () => {
   const router = useRouter();
 
   // upload video
-  const uploadVideo = async (e: any) => {
+  const uploadVideo = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
-    const selectedFile = e.target.files[0];
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) {
+      setIsLoading(false);
+      return;
+    }
     const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
 
     // check video file type
@@ -76,10 +80,13 @@ const Upload = () => {
     }
   };
 
-  if (!userProfile) router.push("/");
+  useEffect(() => {
+    if (!userProfile) router.push("/");
+  }, [userProfile, router]);
 
-  if (userProfile)
-    return (
+  if (!userProfile) return null;
+
+  return (
       <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center">
         <div className="bg-white rounded-lg xl:h-[80vh] w-[60%] flex gap-6 flex-wrap justify-between items-center p-14 pt-6">
           <div>

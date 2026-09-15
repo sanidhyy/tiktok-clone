@@ -1,8 +1,11 @@
 packages:
-  - "tiktik-backend"
-
+  - tiktik-backend
 allowBuilds:
   core-js: false
   es5-ext: false
   sharp: false
   uglifyjs-webpack-plugin: false
+  unrs-resolver: true
+overrides:
+  '@types/react': 19.3.0
+  '@types/react-dom': 19.3.0

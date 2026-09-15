@@ -15,6 +15,7 @@ export interface Video {
     image: string;
   };
   likes: {
+    _ref?: string;
     postedBy: {
       _id: string;
       userName: string;

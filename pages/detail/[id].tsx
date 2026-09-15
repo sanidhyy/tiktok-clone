@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, FormEvent } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,7 +62,7 @@ const Detail = ({ postDetails }: IProps) => {
   };
 
   // add comment
-  const addComment = async (e: { preventDefault: any }) => {
+  const addComment = async (e: FormEvent) => {
     e.preventDefault(); // prevent page reload
 
     // Check if string is empty or contains whitespaces
@@ -149,7 +149,6 @@ const Detail = ({ postDetails }: IProps) => {
                     className="rounded-full"
                     src={post.postedBy.image}
                     alt="profile photo"
-                    layout="responsive"
                   />
                 </>
               </Link>

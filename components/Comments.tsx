@@ -9,7 +9,7 @@ import { IUser } from "../types";
 
 // Props interface
 interface IProps {
-  isPostingComment: Boolean;
+  isPostingComment: boolean;
   comment: string;
   setComment: Dispatch<SetStateAction<string>>;
   addComment: (e: FormEvent) => void;
@@ -55,7 +55,6 @@ const Comments = ({
                               height={34}
                               className="rounded-full"
                               alt={user.userName}
-                              layout="responsive"
                             />
                           </div>
 

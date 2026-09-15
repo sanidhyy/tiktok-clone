@@ -35,7 +35,6 @@ const SuggestedAccounts = () => {
                   height={34}
                   className="rounded-full"
                   alt={user.userName}
-                  layout="responsive"
                 />
               </div>
 

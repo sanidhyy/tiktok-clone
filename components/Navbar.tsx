@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -42,10 +42,9 @@ const Navbar = () => {
         <div className="w-[100px] md:w-[130px]">
           {/* Brand Logo */}
           <Image
-            className="cursor-pointer"
+            className="cursor-pointer w-full h-auto"
             src={Logo}
             alt="TikTik"
-            layout="responsive"
           />
         </div>
       </Link>

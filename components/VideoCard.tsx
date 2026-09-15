@@ -52,7 +52,6 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                   className="rounded-full"
                   src={post.postedBy.image}
                   alt="profile photo"
-                  layout="responsive"
                 />
               </>
             </Link>

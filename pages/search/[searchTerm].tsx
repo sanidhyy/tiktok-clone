@@ -15,7 +15,7 @@ import useAuthStore from "../../store/authStore";
 const Search = ({ videos }: { videos: Video[] }) => {
   const [accounts, setAccounts] = useState(false);
   const router = useRouter();
-  const { searchTerm }: any = router.query;
+  const searchTerm = String(router.query.searchTerm ?? "");
   const { allUsers } = useAuthStore();
 
   // account/video styles

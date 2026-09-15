@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { GoVerified } from "react-icons/go";
 import axios from "axios";
@@ -20,21 +20,11 @@ interface IProps {
 // Profile
 const Profile = ({ data }: IProps) => {
   const [showUserVideos, setShowUserVideos] = useState(true);
-  const [videosList, setVideosList] = useState<Video[]>([]);
   const { user, userVideos, userLikedVideos } = data;
+  const videosList = showUserVideos ? userVideos : userLikedVideos;
 
-  // video/liked styles
   const videos = showUserVideos ? "border-b-2 border-black" : "text-gray-400";
   const liked = !showUserVideos ? "border-b-2 border-black" : "text-gray-400";
-
-  // set video list
-  useEffect(() => {
-    if (showUserVideos) {
-      setVideosList(userVideos);
-    } else {
-      setVideosList(userLikedVideos);
-    }
-  }, [showUserVideos, userLikedVideos, userVideos]);
 
   return (
     <div className="w-full">
@@ -47,7 +37,6 @@ const Profile = ({ data }: IProps) => {
             height={120}
             className="rounded-full"
             alt={user.userName}
-            layout="responsive"
           />
         </div>
 
