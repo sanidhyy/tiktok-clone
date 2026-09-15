@@ -74,13 +74,13 @@ const Navbar = () => {
       <div>
         {/* check user login */}
         {userProfile ? (
-          <div className="flex gap-5 md:gap-10">
-            {/* upload post */}
-            <Link href="/upload">
-              <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
-                <IoMdAdd className="text-xl" />
-                {` `} <span className="hidden md:block">Upload</span>
-              </button>
+          <div className="flex items-center gap-5 md:gap-10">
+            <Link
+              href="/upload"
+              className="inline-flex h-10 items-center justify-center gap-1.5 border-2 border-gray-200 px-2 md:px-4 text-sm font-semibold rounded-sm hover:bg-gray-100"
+            >
+              <IoMdAdd className="text-xl" />
+              <span className="hidden md:inline">Upload</span>
             </Link>
 
             {/* User Avatar */}
