@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { uuid } from "uuidv4";
 
 import { client } from "../../../utils/client";
 import { postDetailQuery } from "../../../utils/queries";
@@ -28,7 +27,7 @@ export default async function handler(
       .insert("after", "comments[-1]", [
         {
           comment: comment,
-          _key: uuid(),
+          _key: crypto.randomUUID(),
           postedBy: { _type: "postedBy", _ref: userId },
         },
       ])

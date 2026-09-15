@@ -1,5 +1,5 @@
 import axios from "axios";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 // base url
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
