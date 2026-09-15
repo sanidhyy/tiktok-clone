@@ -6,6 +6,7 @@
   "main": "package.json",
   "license": "MIT",
   "scripts": {
+    "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build"
   },
