@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { client } from "../../../utils/client";
-import { postDetailQuery } from "../../../utils/queries";
+import { postDetailQuery, queryParam } from "../../../utils/queries";
 
 // Post
 export default async function handler(
@@ -19,10 +19,10 @@ export default async function handler(
   } else if (req.method === "PUT") {
     // insert comments
     const { comment, userId } = req.body;
-    const { id }: any = req.query;
+    const { id } = req.query;
 
     const data = await client
-      .patch(id)
+      .patch(queryParam(id))
       .setIfMissing({ comments: [] })
       .insert("after", "comments[-1]", [
         {

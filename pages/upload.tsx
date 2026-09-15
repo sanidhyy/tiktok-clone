@@ -8,7 +8,7 @@ import { client } from "../utils/client";
 import { topics } from "../utils/constants";
 import { BASE_URL } from "../utils";
 
-type UploadedAsset = { _id: string };
+type UploadedAsset = { _id: string; url?: string };
 
 // Upload
 const Upload = () => {
