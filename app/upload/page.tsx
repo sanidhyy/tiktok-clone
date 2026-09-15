@@ -7,7 +7,6 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import axios from "axios";
 
 import useAuthStore from "../../store/authStore";
-import { client } from "../../utils/client";
 import { topics } from "../../utils/constants";
 import { BASE_URL } from "../../utils";
 import Spinner from "../../components/Spinner";
@@ -34,12 +33,12 @@ const Upload = () => {
     const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
 
     if (fileTypes.includes(selectedFile.type)) {
-      client.assets
-        .upload("file", selectedFile, {
-          contentType: selectedFile.type,
-          filename: selectedFile.name,
-        })
-        .then((data) => {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      axios
+        .post<UploadedAsset>(`${BASE_URL}/api/upload`, formData)
+        .then(({ data }) => {
           setVideoAsset(data);
           setWrongFileType(false);
         })
