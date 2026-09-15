@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { AiOutlineLogout } from "react-icons/ai";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { BiSearch } from "react-icons/bi";

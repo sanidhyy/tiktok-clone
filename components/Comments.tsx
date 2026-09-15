@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Dispatch, SetStateAction, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";

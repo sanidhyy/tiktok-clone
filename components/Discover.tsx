@@ -1,13 +1,15 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 import { topics } from "../utils/constants";
 
 // Discover
 const Discover = () => {
-  const router = useRouter();
-  const { topic } = router.query;
+  const searchParams = useSearchParams();
+  const topic = searchParams.get("topic");
 
   // active topic link style
   const activeTopicStyle =

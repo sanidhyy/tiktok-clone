@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect, useRef, FormEvent } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { GoVerified } from "react-icons/go";
@@ -8,19 +10,13 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import axios from "axios";
 
-import { BASE_URL } from "../../utils";
-import { Video } from "../../types";
-import useAuthStore from "../../store/authStore";
-import LikeButton from "../../components/LikeButton";
-import Comments from "../../components/Comments";
+import { BASE_URL } from "../../../utils";
+import { Video } from "../../../types";
+import useAuthStore from "../../../store/authStore";
+import LikeButton from "../../../components/LikeButton";
+import Comments from "../../../components/Comments";
 
-// Props interface
-interface IProps {
-  postDetails: Video;
-}
-
-// Detail
-const Detail = ({ postDetails }: IProps) => {
+const DetailClient = ({ postDetails }: { postDetails: Video }) => {
   const [post, setPost] = useState(postDetails);
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
@@ -30,7 +26,6 @@ const Detail = ({ postDetails }: IProps) => {
   const router = useRouter();
   const { userProfile } = useAuthStore();
 
-  // video pause/play
   const onVideoClick = () => {
     if (playing) {
       videoRef?.current?.pause();
@@ -41,14 +36,12 @@ const Detail = ({ postDetails }: IProps) => {
     }
   };
 
-  // video mute/unmute
   useEffect(() => {
     if (post && videoRef?.current) {
       videoRef.current.muted = isVideoMuted;
     }
   }, [post, isVideoMuted]);
 
-  // handle like
   const handleLike = async (like: boolean) => {
     if (userProfile) {
       const { data } = await axios.put(`${BASE_URL}/api/like`, {
@@ -61,20 +54,16 @@ const Detail = ({ postDetails }: IProps) => {
     }
   };
 
-  // add comment
   const addComment = async (e: FormEvent) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
 
-    // Check if string is empty or contains whitespaces
     const isEmptyOrSpaces = (str: string) => {
       return /^\s*$/.test(str);
     };
 
-    // check user login
     if (userProfile && !isEmptyOrSpaces(comment)) {
       setIsPostingComment(true);
 
-      // add comment
       const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
         userId: userProfile._id,
         comment,
@@ -92,14 +81,12 @@ const Detail = ({ postDetails }: IProps) => {
     <div className="flex w-full absolute left-0 top-0 bg-white flex-wrap lg:flex-nowrap">
       <div className="relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-blurred-img bg-no-repeat bg-cover bg-center">
         <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
-          {/* Close Icon */}
           <p className="cursor-pointer" onClick={() => router.back()}>
             <MdOutlineCancel className="text-white text-[35px]" />
           </p>
         </div>
         <div className="relative">
           <div className="lg:h-[100vh] h-[60vh]">
-            {/* Post Video */}
             <video
               src={post.video.asset.url}
               className="h-full cursor-pointer"
@@ -109,7 +96,6 @@ const Detail = ({ postDetails }: IProps) => {
             ></video>
           </div>
 
-          {/* Play Btn */}
           <div className="absolute top-[45%] left-[45%] cursor-pointer">
             {!playing && (
               <button>
@@ -122,7 +108,6 @@ const Detail = ({ postDetails }: IProps) => {
           </div>
         </div>
 
-        {/* Video mute/unmute btn */}
         <div className="absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer">
           {isVideoMuted ? (
             <button onClick={() => setIsVideoMuted(false)}>
@@ -141,21 +126,17 @@ const Detail = ({ postDetails }: IProps) => {
           <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
             <div className="ml-4 md:w-16 md:h-16 w-16 h-16">
               <Link href="/">
-                <>
-                  {/* User Avatar */}
-                  <Image
-                    width={62}
-                    height={62}
-                    className="rounded-full"
-                    src={post.postedBy.image}
-                    alt="profile photo"
-                  />
-                </>
+                <Image
+                  width={62}
+                  height={62}
+                  className="rounded-full"
+                  src={post.postedBy.image}
+                  alt="profile photo"
+                />
               </Link>
             </div>
             <div>
               <Link href="/">
-                {/* User Info */}
                 <div className="mt-3 flex flex-col gap-2">
                   <p className="flex gap-2 items-center md:text-md font-bold text-primary">
                     {post.postedBy.userName}
@@ -170,11 +151,9 @@ const Detail = ({ postDetails }: IProps) => {
             </div>
           </div>
 
-          {/* Post Caption */}
           <p className="px-10 text-lg text-gray-600">{post.caption}</p>
 
           <div className="m-10 px-10">
-            {/* Like Button */}
             {userProfile && (
               <LikeButton
                 likes={post.likes}
@@ -184,7 +163,6 @@ const Detail = ({ postDetails }: IProps) => {
             )}
           </div>
 
-          {/* Comments */}
           <Comments
             comment={comment}
             setComment={setComment}
@@ -198,20 +176,4 @@ const Detail = ({ postDetails }: IProps) => {
   );
 };
 
-// get server side props
-export const getServerSideProps = async ({
-  params: { id },
-}: {
-  params: {
-    id: string;
-  };
-}) => {
-  // fetch post details
-  const { data } = await axios.get(`${BASE_URL}/api/post/${id}`);
-
-  return {
-    props: { postDetails: data },
-  };
-};
-
-export default Detail;
+export default DetailClient;

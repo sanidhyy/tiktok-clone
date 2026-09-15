@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from "react";
-import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
@@ -14,7 +15,7 @@ interface IProps {
 }
 
 // Video Card
-const VideoCard: NextPage<IProps> = ({ post }) => {
+const VideoCard = ({ post }: IProps) => {
   const [isHover, setIsHover] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
