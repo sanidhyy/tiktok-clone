@@ -26,27 +26,26 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
 4. Clone this repository to your local computer.
 5. Open terminal in root directory. Run `npm install` or `pnpm install`.
-6. Now, cd `tiktik-backend`. Run `npm install` or `pnpm install` again.
+6. Workspace packages (including Sanity Studio) install from the repo root, so you do not need a second install in `tiktik-backend`.
 7. Now all required packages are installed, let's setup sanity.
 8. Create an account in [Sanity](https://www.sanity.io/ "Sanity").
-9. In terminal, type `sanity init` to initialize our sanity project.
-10. Once sanity project is initialized, Type `sanity start` to start sanity studio on localhost. URL will be shown in terminal.
-11. After going to localhost, login in with your account. Now, your account is connected with this project.
-12. To get `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_TOKEN`, go to [Sanity](https://www.sanity.io/ "Sanity").
-13. Copy your **project id** as shown below:
+9. In terminal, type `pnpm studio` to start Sanity Studio on localhost. URL will be shown in terminal.
+10. After going to localhost, login with your account. Now, your account is connected with this project.
+11. To get `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_TOKEN`, go to [Sanity](https://www.sanity.io/ "Sanity").
+12. Copy your **project id** as shown below:
     ![Copy project id](https://user-images.githubusercontent.com/71302066/182079379-1e1eec55-c6f3-453c-8000-95983b5da154.png "Copy project id")
 
-14. Under API Tab, go to tokens section and create a token. You can name it whatever you want. Just Don't fotget to copy your project token. You will not be able to copy later.
+13. Under API Tab, go to tokens section and create a token. You can name it whatever you want. Just Don't fotget to copy your project token. You will not be able to copy later.
     ![Copy project token](https://user-images.githubusercontent.com/71302066/182079373-75153621-58a1-4e77-b3e4-db33f92c0e1e.png "Copy project token")
-15. Now, Sanity backend is setup. Let's setup Google OAuth.
-16. Go, to [Google Cloud Developers Console](https://console.cloud.google.com/projectcreate "Google Cloud Developers Console") and create a project.
-17. Once you created the project, make sure to select it from Header section.
-18. Go to APIs & Services > Credentials and create OAuth Client ID. Follow on-screen instructions.
-19. Add Both front end and sanity backend to Authorized URLs as shown below:
+14. Now, Sanity backend is setup. Let's setup Google OAuth.
+15. Go, to [Google Cloud Developers Console](https://console.cloud.google.com/projectcreate "Google Cloud Developers Console") and create a project.
+16. Once you created the project, make sure to select it from Header section.
+17. Go to APIs & Services > Credentials and create OAuth Client ID. Follow on-screen instructions.
+18. Add Both front end and sanity backend to Authorized URLs as shown below:
     ![Change the following settings](https://user-images.githubusercontent.com/71302066/182080398-e940ce1e-8d69-42a8-aa42-3bac86494054.png "Change the following settings")
-20. Copy `NEXT_PUBLIC_GOOGLE_API_TOKEN` and paste it in `.env` file.
+19. Copy `NEXT_PUBLIC_GOOGLE_API_TOKEN` and paste it in `.env` file.
     ![Copy Google API Token](https://user-images.githubusercontent.com/71302066/182080950-9f278d63-c911-45be-b8a0-19dfceae8603.png "Copy Google API Token")
-21. Now Google OAuth is setup successfully :fire:
+20. Now Google OAuth is setup successfully :fire:
 
 _NOTE_: Make sure you don't share these keys publicaly.
 
@@ -121,11 +120,9 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+API route handlers live under `app/api/` and map to `/api/*`. For example, `app/api/post/route.ts` is served at `/api/post`.
 
 ## :page_with_curl: Learn More
 
